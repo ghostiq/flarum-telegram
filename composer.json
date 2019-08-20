@@ -1,5 +1,5 @@
 {
-    "name": "ghostiq/telegram",
+    "name": "ghostiq/flarum-telegram",
     "description": "Telegram login and notifications for Flarum",
     "keywords": [
         "extension",
