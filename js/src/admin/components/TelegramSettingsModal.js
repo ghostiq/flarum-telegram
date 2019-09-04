@@ -18,7 +18,7 @@ export default class TelegramSettingsModal extends SettingsModal {
             m('.Form-group', [
                 m('label', app.translator.trans(translationPrefix + 'field.botUsername')),
                 m('input.FormControl', {
-                    bidi: this.setting(),
+                    bidi: this.setting(settingsPrefix + 'botUsername'),
                     placeholder: 'SampleBot',
                 }),
             ]),
