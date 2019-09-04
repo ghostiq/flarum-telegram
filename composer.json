@@ -24,6 +24,19 @@
     "require": {
         "flarum/core": "^0.1.0-beta.7"
     },
+    "extra": {
+        "flarum-extension": {
+            "title": "Flagrow Telegram",
+            "icon": {
+                "name": "telegram",
+                "backgroundColor": "#f4f4f4",
+                "color": "#5f4bb6"
+            }
+        },
+        "flagrow": {
+            "discuss": "https://discuss.flarum.org/d/9033-telegram-login-and-notifications-by-flagrow"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Ghostiq\\FlarumTelegram\\": "src/"

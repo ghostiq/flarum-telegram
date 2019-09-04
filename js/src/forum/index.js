@@ -6,7 +6,7 @@ import addNotificationMethod from './components/addNotificationMethod';
 
 app.initializers.add('ghostiq-flarumtelegram', () => {
     User.prototype.canReceiveTelegramNotifications = Model.attribute('canReceiveTelegramNotifications');
-    User.prototype.ghostiqFlarumTelegramError = Model.attribute('flarumTelegramError');
+    User.prototype.flarumTelegramError = Model.attribute('flarumTelegramError');
 
     addLoginButton();
     addNotificationMethod();
