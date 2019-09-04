@@ -1,21 +1,24 @@
-import app from 'flarum/app';
 import SettingsModal from 'flarum/components/SettingsModal';
 import Switch from 'flarum/components/Switch';
 
-const settingsPrefix = 'flagrow-telegram.';
-const translationPrefix = 'flagrow-telegram.admin.settings.';
+const settingsPrefix = 'flarum-telegram.';
+const translationPrefix = 'flarum-telegram.admin.settings.';
 
 export default class TelegramSettingsModal extends SettingsModal {
+    className() {
+      return 'TelegramSettingsModal Modal--small';
+    }
+
     title() {
         return app.translator.trans(translationPrefix + 'title');
     }
 
-    form() {
+    /*form() {
         return [
             m('.Form-group', [
                 m('label', app.translator.trans(translationPrefix + 'field.botUsername')),
                 m('input.FormControl', {
-                    bidi: this.setting(settingsPrefix + 'botUsername'),
+                    bidi: this.setting(),
                     placeholder: 'SampleBot',
                 }),
             ]),
@@ -34,5 +37,19 @@ export default class TelegramSettingsModal extends SettingsModal {
                 })),
             ]),
         ];
-    }
+    }*/
+    
+  form() {
+    return [
+      <div className="Form-group">
+        <label>{app.translator.trans(translationPrefix + 'field.botUsername')}</label>
+        <input className="FormControl" bidi={this.setting(settingsPrefix + 'botUsername')}/>
+      </div>,
+
+      <div className="Form-group">
+        <label>{app.translator.trans(translationPrefix + 'field.botToken')}</label>
+        <input className="FormControl" bidi={this.setting(settingsPrefix + 'botToken')}/>
+      </div>
+    ];
+  }
 }

@@ -4,7 +4,7 @@ import Model from 'flarum/Model';
 import addLoginButton from './components/addLoginButton';
 import addNotificationMethod from './components/addNotificationMethod';
 
-app.initializers.add('flagrow-telegram', () => {
+app.initializers.add('flarum-telegram', () => {
     User.prototype.canReceiveTelegramNotifications = Model.attribute('canReceiveTelegramNotifications');
     User.prototype.flagrowTelegramError = Model.attribute('flagrowTelegramError');
 

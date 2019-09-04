@@ -2,10 +2,11 @@
 
 namespace Flagrow\Telegram\Controllers;
 
-use Flarum\Forum\AuthenticationResponseFactory;
-use Flarum\Forum\UrlGenerator;
+use Flarum\Forum\Auth\ResponseFactory;
 #use Flarum\Http\Controller\ControllerInterface;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Flarum\Http\UrlGenerator;
+use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface;
 use Exception;
@@ -17,25 +18,25 @@ class TelegramAuthController implements RequestHandlerInterface
     protected $settings;
     protected $url;
 
-    public function __construct(AuthenticationResponseFactory $authResponse, SettingsRepositoryInterface $settings, UrlGenerator $url)
+    public function __construct(ResponseFactory $authResponse, SettingsRepositoryInterface $settings, UrlGenerator $url)
     {
         $this->authResponse = $authResponse;
         $this->settings = $settings;
         $this->url = $url;
     }
 
-    public function handle(Request $request)
+    public function handle(Request $request): Response
     {
         $auth = $request->getQueryParams();
 
         if (!array_key_exists('hash', $auth)) {
             $settings = [
-                'telegram-login' => $this->settings->get('flagrow-telegram.botUsername'),
+                'telegram-login' => $this->settings->get('flarum-telegram.botUsername'),
                 'size' => 'large',
-                'auth-url' => $this->url->toRoute('auth.telegram'),
+                'auth-url' => $this->url->to('auth.telegram'),
             ];
 
-            if ($this->settings->get('flagrow-telegram.enableNotifications')) {
+            if ($this->settings->get('flarum-telegram.enableNotifications')) {
                 $settings['request-access'] = 'write';
             }
 
@@ -90,7 +91,7 @@ class TelegramAuthController implements RequestHandlerInterface
 
         sort($data_check_arr);
         $data_check_string = implode("\n", $data_check_arr);
-        $secret_key = hash('sha256', $this->settings->get('flagrow-telegram.botToken'), true);
+        $secret_key = hash('sha256', $this->settings->get('flarum-telegram.botToken'), true);
         $hash = hash_hmac('sha256', $data_check_string, $secret_key);
 
         if (strcmp($hash, $check_hash) !== 0) {

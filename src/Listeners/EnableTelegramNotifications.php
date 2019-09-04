@@ -23,7 +23,7 @@ class EnableTelegramNotifications
 
     public function configure(ConfigureNotificationTypes $event)
     {
-        if (!$this->settings->get('flagrow-telegram.enableNotifications')) {
+        if (!$this->settings->get('flarum-telegram.enableNotifications')) {
             return;
         }
 

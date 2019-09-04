@@ -5,11 +5,11 @@ import LogInButton from 'flarum/components/LogInButton';
 
 export default function () {
     extend(LogInButtons.prototype, 'items', function (items) {
-        items.add('flagrow-telegram', LogInButton.component({
+        items.add('flarum-telegram', LogInButton.component({
             className: 'Button LogInButton--telegram',
             icon: 'telegram',
             path: '/auth/telegram',
-            children: app.translator.trans('flagrow-telegram.forum.log_in_with_telegram_button'),
+            children: app.translator.trans('flarum-telegram.forum.log_in_with_telegram_button'),
         }));
     });
 }
