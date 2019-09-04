@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagrow\Telegram\Listeners;
+namespace Ghostiq\FlarumTelegram\Listeners;
 
-use Flagrow\Telegram\Controllers\TelegramAuthController;
+use Ghostiq\FlarumTelegram\Controllers\TelegramAuthController;
 use Flarum\Event\ConfigureForumRoutes;
 use Illuminate\Contracts\Events\Dispatcher;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Telegram\Controllers;
+namespace Ghostiq\FlarumTelegram\Controllers;
 
 use Flarum\Forum\Auth\ResponseFactory;
 #use Flarum\Http\Controller\ControllerInterface;
@@ -31,12 +31,12 @@ class TelegramAuthController implements RequestHandlerInterface
 
         if (!array_key_exists('hash', $auth)) {
             $settings = [
-                'telegram-login' => $this->settings->get('flagrow-telegram.botUsername'),
+                'telegram-login' => $this->settings->get('ghostiq-flarumtelegram.botUsername'),
                 'size' => 'large',
                 'auth-url' => $this->url->to('auth.telegram'),
             ];
 
-            if ($this->settings->get('flagrow-telegram.enableNotifications')) {
+            if ($this->settings->get('ghostiq-flarumtelegram.enableNotifications')) {
                 $settings['request-access'] = 'write';
             }
 
@@ -59,7 +59,7 @@ class TelegramAuthController implements RequestHandlerInterface
         $this->checkTelegramAuthorization($auth);
 
         $identification = [
-            'flagrow_telegram_id' => array_get($auth, 'id'),
+            'ghostiq_flarumtelegram_id' => array_get($auth, 'id'),
         ];
 
         $suggestions = [
@@ -91,7 +91,7 @@ class TelegramAuthController implements RequestHandlerInterface
 
         sort($data_check_arr);
         $data_check_string = implode("\n", $data_check_arr);
-        $secret_key = hash('sha256', $this->settings->get('flagrow-telegram.botToken'), true);
+        $secret_key = hash('sha256', $this->settings->get('ghostiq-flarumtelegram.botToken'), true);
         $hash = hash_hmac('sha256', $data_check_string, $secret_key);
 
         if (strcmp($hash, $check_hash) !== 0) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Telegram\Notifications;
+namespace Ghostiq\FlarumTelegram\Notifications;
 
 use Exception;
 use Flarum\Notification\Blueprint\BlueprintInterface;
@@ -18,7 +18,7 @@ class TelegramMailer
 
     public function __construct(SettingsRepositoryInterface $settings, Factory $views)
     {
-        $token = $settings->get('flagrow-telegram.botToken');
+        $token = $settings->get('ghostiq-flarumtelegram.botToken');
 
         if (!$token) {
             throw new Exception('No bot token configured for Telegram');
@@ -44,15 +44,15 @@ class TelegramMailer
         try {
             $this->client->post('sendMessage', [
                 'json' => [
-                    'chat_id' => $user->flagrow_telegram_id,
+                    'chat_id' => $user->ghostiq_flarumtelegram_id,
                     'text' => $text,
                     'parse_mode' => 'HTML',
                 ],
             ]);
 
             // Reset error if everything went right
-            if ($user->flagrow_telegram_error) {
-                $user->flagrow_telegram_error = null;
+            if ($user->ghostiq_flarumtelegram_error) {
+                $user->ghostiq_flarumtelegram_error = null;
                 $user->save();
             }
         } catch (ClientException $exception) {
@@ -62,12 +62,12 @@ class TelegramMailer
                 throw $exception;
             }
 
-            $user->flagrow_telegram_error = 'unauthorized';
+            $user->ghostiq_flarumtelegram_error = 'unauthorized';
 
             $json = json_decode($response->getBody()->getContents(), true);
 
             if ($json && str_contains(array_get($json, 'description', ''), 'blocked by the user')) {
-                $user->flagrow_telegram_error = 'blocked';
+                $user->ghostiq_flarumtelegram_error = 'blocked';
             }
 
             $user->save();

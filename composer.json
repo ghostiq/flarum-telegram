@@ -1,10 +1,9 @@
 {
-    "name": "ghostiq/flagrow-telegram",
+    "name": "ghostiq/flarumtelegram",
     "description": "Telegram login and notifications for Flarum",
     "keywords": [
         "extension",
         "flarum",
-        "flagrow",
         "telegram",
         "auth",
         "notifications"
@@ -19,28 +18,15 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/flagrow/telegram/issues",
-        "source": "https://github.com/flagrow/telegram"
+        "issues": "https://github.com/ghostiq/flarumtelegram/issues",
+        "source": "https://github.com/ghostiq/flarumtelegram"
     },
     "require": {
         "flarum/core": "^0.1.0-beta.7"
     },
-    "extra": {
-        "flarum-extension": {
-            "title": "Flagrow Telegram",
-            "icon": {
-                "name": "telegram",
-                "backgroundColor": "#f4f4f4",
-                "color": "#5f4bb6"
-            }
-        },
-        "flagrow": {
-            "discuss": "https://discuss.flarum.org/d/9033-telegram-login-and-notifications-by-flagrow"
-        }
-    },
     "autoload": {
         "psr-4": {
-            "Flagrow\\Telegram\\": "src/"
+            "Ghostiq\\FlarumTelegram\\": "src/"
         }
     }
 }

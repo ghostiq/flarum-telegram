@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagrow\Telegram\Listeners;
+namespace Ghostiq\FlarumTelegram\Listeners;
 
-use Flagrow\Telegram\Notifications\TelegramMailer;
+use Ghostiq\FlarumTelegram\Notifications\TelegramMailer;
 use Flarum\Notification\Blueprint\BlueprintInterface;
 use Flarum\User\User;
 use Flarum\Notification\Event\Sending;
@@ -35,6 +35,6 @@ class SendTelegramNotifications
             return false;
         }
 
-        return !is_null($user->flagrow_telegram_id);
+        return !is_null($user->ghostiq_flarumtelegram_id);
     }
 }

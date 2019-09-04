@@ -6,14 +6,14 @@ use Illuminate\Database\Schema\Builder;
 return [
     'up' => function (Builder $schema) {
         $schema->table('users', function (Blueprint $table) {
-            $table->unsignedInteger('flagrow_telegram_id')->nullable()->unique();
-            $table->string('flagrow_telegram_error', 50)->nullable();
+            $table->unsignedInteger('ghostiq_flarumtelegram_id')->nullable()->unique();
+            $table->string('ghostiq_flarumtelegram_error', 50)->nullable();
         });
     },
     'down' => function (Builder $schema) {
         $schema->table('users', function (Blueprint $table) {
-            $table->dropColumn('flagrow_telegram_id');
-            $table->dropColumn('flagrow_telegram_error');
+            $table->dropColumn('ghostiq_flarumtelegram_id');
+            $table->dropColumn('ghostiq_flarumtelegram_error');
         });
     },
 ];

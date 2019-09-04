@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Telegram;
+namespace Ghostiq\FlarumTelegram;
 
 use Flarum\Extend;
 use Illuminate\Contracts\Events\Dispatcher;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Telegram\Listeners;
+namespace Ghostiq\FlarumTelegram\Listeners;
 
 use DirectoryIterator;
 use Flarum\Event\ConfigureLocales;
@@ -28,14 +28,14 @@ class Assets
                 __DIR__ . '/../../js/dist/forum.js',
                 __DIR__ . '/../../less/forum.less',
             ]);
-            $event->addBootstrapper('flagrow/telegram/main');
+            $event->addBootstrapper('ghostiq/flarumtelegram/main');
         }
 
         if ($event->isAdmin()) {
             $event->addAssets([
                 __DIR__ . '/../../js/dist/admin.js',
             ]);
-            $event->addBootstrapper('flagrow/telegram/main');
+            $event->addBootstrapper('ghostiq/flarumtelegram/main');
         }
     }
 

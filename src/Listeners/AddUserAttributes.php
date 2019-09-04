@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Telegram\Listeners;
+namespace Ghostiq\FlarumTelegram\Listeners;
 
 use Flarum\Api\Serializer\CurrentUserSerializer;
 use Flarum\Api\Event\Serializing;
@@ -16,8 +16,8 @@ class AddUserAttributes
     public function addAttributes(Serializing $event)
     {
         if ($event->isSerializer(CurrentUserSerializer::class)) {
-            $event->attributes['canReceiveTelegramNotifications'] = !is_null($event->model->flagrow_telegram_id);
-            $event->attributes['flagrowTelegramError'] = $event->model->flagrow_telegram_error;
+            $event->attributes['canReceiveTelegramNotifications'] = !is_null($event->model->ghostiq_flarumtelegram_id);
+            $event->attributes['flarumTelegramError'] = $event->model->ghostiq_flarumtelegram_error;
         }
     }
 }

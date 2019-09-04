@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagrow\Telegram\Listeners;
+namespace Ghostiq\FlarumTelegram\Listeners;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Api\Event\Serializing;
@@ -24,8 +24,8 @@ class InjectSettings
     public function settings(Serializing $event)
     {
         if ($event->serializer instanceof ForumSerializer) {
-            $event->attributes['flagrow-telegram.enableNotifications'] = (bool)$this->settings->get('flarum-telegram.enableNotifications');
-            $event->attributes['flagrow-telegram.botUsername'] = $this->settings->get('flarum-telegram.botUsername');
+            $event->attributes['ghostiq-flarumtelegram.enableNotifications'] = (bool)$this->settings->get('flarum-telegram.enableNotifications');
+            $event->attributes['ghostiq-flarumtelegram.botUsername'] = $this->settings->get('flarum-telegram.botUsername');
         }
     }
 }

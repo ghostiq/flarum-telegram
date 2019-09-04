@@ -1,8 +1,8 @@
 import SettingsModal from 'flarum/components/SettingsModal';
 import Switch from 'flarum/components/Switch';
 
-const settingsPrefix = 'flagrow-telegram.';
-const translationPrefix = 'flagrow-telegram.admin.settings.';
+const settingsPrefix = 'ghostiq-flarumtelegram.';
+const translationPrefix = 'ghostiq-flarumtelegram.admin.settings.';
 
 export default class TelegramSettingsModal extends SettingsModal {
     className() {
