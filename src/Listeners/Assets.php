@@ -25,15 +25,15 @@ class Assets
     {
         if ($event->isForum()) {
             $event->addAssets([
-                __DIR__ . '/../../js/forum/dist/extension.js',
-                __DIR__ . '/../../resources/less/forum.less',
+                __DIR__ . '/../../js/dist/forum.js',
+                __DIR__ . '/../../less/forum.less',
             ]);
             $event->addBootstrapper('flagrow/telegram/main');
         }
 
         if ($event->isAdmin()) {
             $event->addAssets([
-                __DIR__ . '/../../js/admin/dist/extension.js',
+                __DIR__ . '/../../js/dist/admin.js',
             ]);
             $event->addBootstrapper('flagrow/telegram/main');
         }
@@ -46,7 +46,7 @@ class Assets
      */
     public function addLocales(ConfigureLocales $event)
     {
-        foreach (new DirectoryIterator(__DIR__ . '/../../resources/locale') as $file) {
+        foreach (new DirectoryIterator(__DIR__ . '/../../locale') as $file) {
             if ($file->isFile() && in_array($file->getExtension(), ['yml', 'yaml'])) {
                 $event->locales->addTranslations($file->getBasename('.' . $file->getExtension()), $file->getPathname());
             }
