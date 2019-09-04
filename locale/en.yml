@@ -1,4 +1,4 @@
-flarum-telegram:
+flagrow-telegram:
     admin:
         settings:
             title: Telegram Settings

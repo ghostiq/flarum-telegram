@@ -31,12 +31,12 @@ class TelegramAuthController implements RequestHandlerInterface
 
         if (!array_key_exists('hash', $auth)) {
             $settings = [
-                'telegram-login' => $this->settings->get('flarum-telegram.botUsername'),
+                'telegram-login' => $this->settings->get('flagrow-telegram.botUsername'),
                 'size' => 'large',
                 'auth-url' => $this->url->to('auth.telegram'),
             ];
 
-            if ($this->settings->get('flarum-telegram.enableNotifications')) {
+            if ($this->settings->get('flagrow-telegram.enableNotifications')) {
                 $settings['request-access'] = 'write';
             }
 
@@ -91,7 +91,7 @@ class TelegramAuthController implements RequestHandlerInterface
 
         sort($data_check_arr);
         $data_check_string = implode("\n", $data_check_arr);
-        $secret_key = hash('sha256', $this->settings->get('flarum-telegram.botToken'), true);
+        $secret_key = hash('sha256', $this->settings->get('flagrow-telegram.botToken'), true);
         $hash = hash_hmac('sha256', $data_check_string, $secret_key);
 
         if (strcmp($hash, $check_hash) !== 0) {

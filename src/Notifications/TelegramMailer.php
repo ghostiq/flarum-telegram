@@ -18,7 +18,7 @@ class TelegramMailer
 
     public function __construct(SettingsRepositoryInterface $settings, Factory $views)
     {
-        $token = $settings->get('flarum-telegram.botToken');
+        $token = $settings->get('flagrow-telegram.botToken');
 
         if (!$token) {
             throw new Exception('No bot token configured for Telegram');

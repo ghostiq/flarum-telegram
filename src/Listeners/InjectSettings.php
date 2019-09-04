@@ -24,8 +24,8 @@ class InjectSettings
     public function settings(Serializing $event)
     {
         if ($event->serializer instanceof ForumSerializer) {
-            $event->attributes['flarum-telegram.enableNotifications'] = (bool)$this->settings->get('flarum-telegram.enableNotifications');
-            $event->attributes['flarum-telegram.botUsername'] = $this->settings->get('flarum-telegram.botUsername');
+            $event->attributes['flagrow-telegram.enableNotifications'] = (bool)$this->settings->get('flarum-telegram.enableNotifications');
+            $event->attributes['flagrow-telegram.botUsername'] = $this->settings->get('flarum-telegram.botUsername');
         }
     }
 }
