@@ -13,7 +13,7 @@ export default class TelegramSettingsModal extends SettingsModal {
         return app.translator.trans(translationPrefix + 'title');
     }
 
-    /*form() {
+    form() {
         return [
             m('.Form-group', [
                 m('label', app.translator.trans(translationPrefix + 'field.botUsername')),
@@ -37,19 +37,5 @@ export default class TelegramSettingsModal extends SettingsModal {
                 })),
             ]),
         ];
-    }*/
-    
-  form() {
-    return [
-      <div className="Form-group">
-        <label>{app.translator.trans(translationPrefix + 'field.botUsername')}</label>
-        <input className="FormControl" bidi={this.setting(settingsPrefix + 'botUsername')}/>
-      </div>,
-
-      <div className="Form-group">
-        <label>{app.translator.trans(translationPrefix + 'field.botToken')}</label>
-        <input className="FormControl" bidi={this.setting(settingsPrefix + 'botToken')}/>
-      </div>
-    ];
-  }
+    }
 }
