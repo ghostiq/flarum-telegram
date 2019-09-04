@@ -4,13 +4,14 @@ namespace Flagrow\Telegram\Controllers;
 
 use Flarum\Forum\AuthenticationResponseFactory;
 use Flarum\Forum\UrlGenerator;
-use Flarum\Http\Controller\ControllerInterface;
+#use Flarum\Http\Controller\ControllerInterface;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface;
 use Exception;
 use Zend\Diactoros\Response\HtmlResponse;
 
-class TelegramAuthController implements ControllerInterface
+class TelegramAuthController implements RequestHandlerInterface
 {
     protected $authResponse;
     protected $settings;
