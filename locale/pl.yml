@@ -1,16 +1,16 @@
 ghostiq-flarumtelegram:
     admin:
         settings:
-            title: Telegram Settings
+            title: Ustawienia Telegram
 
             field:
-                botUsername: Bot Username
-                botToken: Bot Token
-                enableNotifications: Enable Notifications
+                botUsername: Nazwa Bota
+                botToken: Token Bota
+                enableNotifications: Włącz powiadomienia
 
     forum:
-        log_in_with_telegram_button: Log in with Telegram
+        log_in_with_telegram_button: Zaloguj się przez Telegrama
 
         settings:
             notify_by_telegram_heading: Telegram
-            unblock_telegram_bot: It seems like you did not authorize or blocked the Telegram bot. Send a message to <a>{username}</a> on Telegram to re-enable notifications
+            unblock_telegram_bot: Prawdopodobnie nie autoryzowałeś lub zablokowałeś bota Telegrama. Wyślij wiadomość do użytkownika <a>{username}</a> na Telegramie, aby ponownie aktywować powiadomienia
