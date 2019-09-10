@@ -32,6 +32,8 @@ class EnableTelegramNotifications
             'postMentioned',
             'userMentioned',
             'newPost',
+            'newDiscussionInTag',
+            'newPostInTag',
         ];
 
         foreach ($telegramCompatibleTypes as $type) {

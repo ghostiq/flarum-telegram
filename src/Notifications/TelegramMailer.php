@@ -4,7 +4,7 @@ namespace Ghostiq\FlarumTelegram\Notifications;
 
 use Exception;
 use Flarum\Notification\Blueprint\BlueprintInterface;
-use Flarum\Core\Notification\MailableInterface;
+use Flarum\Notification\MailableInterface;
 use Flarum\User\User;
 use Flarum\Settings\SettingsRepositoryInterface;
 use GuzzleHttp\Client;

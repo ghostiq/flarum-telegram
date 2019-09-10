@@ -2,6 +2,7 @@
 
 namespace Ghostiq\FlarumTelegram\Controllers;
 
+use Flarum\Forum\Auth\Registration;
 use Flarum\Forum\Auth\ResponseFactory;
 #use Flarum\Http\Controller\ControllerInterface;
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -14,13 +15,13 @@ use Zend\Diactoros\Response\HtmlResponse;
 
 class TelegramAuthController implements RequestHandlerInterface
 {
-    protected $authResponse;
+    protected $response;
     protected $settings;
     protected $url;
 
-    public function __construct(ResponseFactory $authResponse, SettingsRepositoryInterface $settings, UrlGenerator $url)
+    public function __construct(ResponseFactory $response, SettingsRepositoryInterface $settings, UrlGenerator $url)
     {
-        $this->authResponse = $authResponse;
+        $this->response = $response;
         $this->settings = $settings;
         $this->url = $url;
     }
@@ -58,16 +59,26 @@ class TelegramAuthController implements RequestHandlerInterface
 
         $this->checkTelegramAuthorization($auth);
 
-        $identification = [
+        /*$identification = [
             'ghostiq_flarumtelegram_id' => array_get($auth, 'id'),
-        ];
+        ];*/
 
         $suggestions = [
-            'username' => array_get($auth, 'username'),
             'avatarUrl' => array_get($auth, 'photo_url'),
+            'firstName' => array_get($auth, 'first_name'),
+            'username' => array_get($auth, 'username'),
+            'ghostiq_flarumtelegram_id' => array_get($auth, 'id'),            
         ];
-
-        return $this->authResponse->make($request, $identification, $suggestions);
+        
+        return $this->response->make(
+            'telegram', $suggestions['ghostiq_flarumtelegram_id'],
+            function (Registration $registration) use ($suggestions) {
+                $registration
+                    ->provideAvatar($suggestions['avatarUrl'])
+                    ->provide('ghostiq_flarumtelegram_id', $suggestions['ghostiq_flarumtelegram_id'])
+                    ->suggestUsername($suggestions['username'])
+                    ->setPayload($suggestions);
+            });
     }
 
     /**

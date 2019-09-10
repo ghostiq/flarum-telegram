@@ -4,7 +4,7 @@ namespace Ghostiq\FlarumTelegram\Listeners;
 
 use DirectoryIterator;
 use Flarum\Event\ConfigureLocales;
-use Flarum\Frontend\Event\Rendering;
+use Flarum\Forum\Event\Rendering;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class Assets

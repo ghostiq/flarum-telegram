@@ -17,7 +17,7 @@ class AddUserAttributes
     {
         if ($event->isSerializer(CurrentUserSerializer::class)) {
             $event->attributes['canReceiveTelegramNotifications'] = !is_null($event->model->ghostiq_flarumtelegram_id);
-            $event->attributes['flarumTelegramError'] = $event->model->flarum_telegram_error;
+            $event->attributes['flarumTelegramError'] = $event->model->ghostiq_flarumtelegram_error;
         }
     }
 }
