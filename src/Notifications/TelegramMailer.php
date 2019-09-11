@@ -47,6 +47,7 @@ class TelegramMailer
                     'chat_id' => $user->ghostiq_flarumtelegram_id,
                     'text' => $text,
                     'parse_mode' => 'HTML',
+                    'disable_web_page_preview' => true,
                 ],
             ]);
 
